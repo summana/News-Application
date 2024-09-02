@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreem Live News</title>
+    <link rel="icon" href="favicon.ico" type="C:\Users\SUMMANA SUBRAMANIAN\Downloads\news app\imagelogo\Shreem News.jpg">
+    <video class="video-background" autoplay muted loop>
+        <source src="" type="video/mp4">
+        
+    </video>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: black;
+        }
+
+        @keyframes colorChange {
+            0% { background-color: black; }
+            50% { background-color: orange; }
+            100% { background-color: black; }
+        }
+
+        body.login-bg {
+            animation: colorChange 5s infinite;
+        }
+
+        body.signup-bg {
+            background: url('https://example.com/signup-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(0, 128, 128, 0.8); /* Semi-transparent background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type=text], input[type=password] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        #news-container {
+            display: none;
+            background-color: #333;
+            color: #fff;
+        }
+
+        nav {
+            background-color: #222;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav img {
+            height: 40px;
+            margin-right: 20px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 10px auto;
+            padding: 10px 0;
+            background-color: #333;
+            width: calc(100% - 40px);
+            max-width: 400px;
+        }
+
+        #search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            margin-right: -1px;
+            background-color: #444;
+            color: white;
+        }
+
+        #search-bar input::placeholder {
+            color: #ccc;
+        }
+
+        #search-bar button {
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 0 5px 5px 0;
+            background-color: #FF4500;
+            color: white;
+            cursor: pointer;
+        }
+
+        #cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 0;
+            width: 100%;
+        }
+
+        .card {
+            flex: 1 1 calc(33.333% - 20px);
+            margin: 10px;
+            background-color: #008080;
+            color: white;
+            box-sizing: border-box;
+            border-radius: 5px;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .card h2, .card p, .card span {
+            margin: 10px;
+        }
+
+        .card:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                flex: 1 1 100%;
+            }
+        }
+
+        #signup-container {
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .form-label {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .form-button {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Multimedia effect for background */
+        .signup-bg {
+            background: url('https://example.com/signup-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="login-bg">
+
+    <div id="login-container" class="container">
+        <h2>Login Page</h2>
+        <label for="uname"><b>Username</b></label>
+        <input type="text" id="username" placeholder="Enter Username" name="uname" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" id="password" placeholder="Enter Password" name="psw" required>
+
+        <div class="button-container">
+            <button type="button" onclick="login()">Login</button>
+            <button type="button" onclick="showSignup()">Sign Up</button>
+        </div>
+    </div>
+
+    <div id="signup-container" class="container">
+        <h2>Sign Up</h2>
+        <table>
+            <tr>
+                <td class="form-label"><label for="newuname">Username</label></td>
+                <td><input type="text" id="newusername" placeholder="Enter Username" class="form-input" name="newuname" required></td>
+            </tr>
+            <tr>
+                <td class="form-label"><label for="newpsw">Password</label></td>
+                <td><input type="password" id="newpassword" placeholder="Enter Password" class="form-input" name="newpsw" required></td>
+            </tr>
+            <tr>
+                <td class="form-label"><label for="confirmpsw">Confirm Password</label></td>
+                <td><input type="password" id="confirmpassword" placeholder="Confirm Password" class="form-input" name="confirmpsw" required></td>
+            </tr>
+            <tr>
+                <td class="form-label"><label for="country">Country</label></td>
+                <td>
+                    <select id="country" class="form-input" name="country" required>
+                        <option value="">Select Country</option>
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                        <option value="UK">UK</option>
+                        <!-- Add more countries as needed -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="form-button">
+                    <button type="button" onclick="signup()">Sign Up</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="news-container">
+        <nav>
+            <img src="C:\Users\SUMMANA SUBRAMANIAN\Downloads\news app\imagelogo\Shreem News.jpg" alt="Logo">
+            <a href="#" onclick="fetchNews('cricket')">Cricket</a>
+            <a href="#" onclick="fetchNews('politics')">Politics</a>
+            <a href="#" onclick="fetchNews('technology')">Technology</a>
+        </nav>
+
+        <div id="search-bar">
+            <input type="text" id="search-text" placeholder="Search..." style="width: 320px; height: 30px; font-size: 16px;">
+            <button id="search-button" style="width: 60px; height: 30px; font-size: 12px;">Search</button>
+        </div>
+
+        <div id="cards-container"></div>
+
+        <template id="template-news-card">
+            <a class="card" href="#" target="_blank">
+                <img id="news-img" src="C:\Users\SUMMANA SUBRAMANIAN\Downloads\news app\imagelogo\Shreem News.jpg" alt="News Image">
+                <h2 id="news-title"></h2>
+                <p id="news-desc"></p>
+                <span id="news-source"></span>
+            </a>
+        </template>
+    </div>
+
+    <script>
+        const API_KEY = "1d3a0eefa97b499d8fbc4ee93eeb40b7";
+        const url = "https://newsapi.org/v2/everything?q=";
+
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if (username === 'sam' && password === '1234') {
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('news-container').style.display = 'block';
+                document.body.classList.remove("login-bg");
+                document.body.classList.add("signup-bg"); // Add this line to set the signup background
+                fetchNews('India');
+            } else {
+                alert('Incorrect Username or Password');
+            }
+        }
+
+        function showSignup() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('signup-container').style.display = 'block';
+        }
+
+        function signup() {
+            var newusername = document.getElementById('newusername').value;
+            var newpassword = document.getElementById('newpassword').value;
+            var confirmpassword = document.getElementById('confirmpassword').value;
+            var country = document.getElementById('country').value;
+
+            if (newpassword !== confirmpassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            alert('Sign Up Successful! You can now log in with your credentials.');
+            document.getElementById('signup-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+        }
+
+        async function fetchNews(query) {
+            const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
+            const data = await res.json();
+            bindData(data.articles);
+        }
+
+        function bindData(articles) {
+            const container = document.getElementById("cards-container");
+            const template = document.getElementById("template-news-card");
+
+            container.innerHTML = "";
+
+            articles.forEach(article => {
+                const card = template.content.cloneNode(true);
+                const link = card.querySelector("a");
+                link.href = article.url; // Set the link to the article's URL
+                link.querySelector("#news-img").src = article.urlToImage || "C:\\Users\\SUMMANA SUBRAMANIAN\\Downloads\\news app\\imagelogo\\Shreem News.jpg"; 
+                link.querySelector("#news-title").textContent = article.title;
+                link.querySelector("#news-desc").textContent = article.description;
+                link.querySelector("#news-source").textContent = `Source: ${article.source.name}`;
+                container.appendChild(card);
+            });
+        }
+
+        document.getElementById("search-button").addEventListener("click", () => {
+            const query = document.getElementById("search-text").value;
+            if (query) {
+                fetchNews(query);
+            }
+        });
+    </script>
+
+</body>
+</html>
